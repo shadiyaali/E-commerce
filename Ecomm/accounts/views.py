@@ -64,7 +64,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'you are now logged in.')
-            return redirect('dashboard')
+            return redirect('index')
         
 
         else:
@@ -102,11 +102,7 @@ def activate(request, uidb64, token):
         
 @login_required(login_url= 'login')        
 def user_dashboard(request): 
-    # orders = order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
-    # orders_count = orders.count()
-    # context = {
-    #     'orders_count': orders_count,
-    # }
+    
     return render(request, 'accounts/user_dashboard.html')
 
 

@@ -101,7 +101,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="accounts/index.html"><img src="{% static 'img/logo.png' %}" alt=""></a>
+                        <a href="accounts/index.html"><img src="{% static 'img/logo.png' %}" height="30px" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -140,7 +140,7 @@
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-1.jpg' %}">
+            <div class="hero__items set-bg" data-setbg="{% static 'img/hero/hero-1.webp' %}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
@@ -204,7 +204,7 @@
                 <div class="col-lg-5">
                     <div class="banner__item banner__item--middle">
                         <div class="banner__item__pic">
-                            <img src="{% static 'img/banner/banner-2.jpg' %}" alt="">
+                            <img src="{% static 'img/banner/banner-2.webp' %}" alt="">
                         </div>
                         <div class="banner__item__text">
                             <h2>Accessories</h2>
@@ -241,9 +241,10 @@
                 </div>
             </div>
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                {% for product in products %}
+                  <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                        <div class="product__item__pic set-bg" data-setbg="{{ product.images.url }}">
                             <span class="label">New</span>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a></li>
@@ -252,7 +253,7 @@
                             </ul>
                         </div>
                         <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
+                            <h6> {{ product.product_name }}</h6>
                             <a href="#" class="add-cart">+ Add To Cart</a>
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
@@ -261,7 +262,7 @@
                                 <i class="fa fa-star-o"></i>
                                 <i class="fa fa-star-o"></i>
                             </div>
-                            <h5>$67.24</h5>
+                            <h5>₹{{ product.price }}</h5>
                             <div class="product__color__select">
                                 <label for="pc-1">
                                     <input type="radio" id="pc-1">
@@ -275,8 +276,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
+                </div>  
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
                             <ul class="product__hover">
@@ -514,8 +515,9 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div>   -->
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -588,7 +590,7 @@
                         <h2>Instagram</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.</p>
-                        <h3>#Male_Fashion</h3>
+                        <h3>abcd</h3>
                     </div>
                 </div>
             </div>

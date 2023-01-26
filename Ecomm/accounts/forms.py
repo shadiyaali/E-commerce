@@ -1,14 +1,14 @@
 from django import forms
-from . models import Account
+from . models import Account,UserProfile
 
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-       'placeholder': 'enter password',
+       'placeholder': 'Enter Password',
         'class': 'form-control',
     }))
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'placeholder': 'confirm password',
+        'placeholder': 'Confirm Password',
         'class' : 'form-control',
     }))
 
@@ -23,6 +23,13 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['first_name', 'last_name','phone_number','email','password']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'placeholder': ' First Name','class' : 'form-control'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name','class' : 'form-control'}),
+            'email': forms.TextInput(attrs={'placeholder': 'Email','class' : 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number','class' : 'form-control'}),
+                
+        }
      
     def clean(self):
         cleaned_data = super(RegistrationForm, self).clean()
@@ -34,3 +41,4 @@ class RegistrationForm(forms.ModelForm):
                 "password does not match!"
             )
 
+  
