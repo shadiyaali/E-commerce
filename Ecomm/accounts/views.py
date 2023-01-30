@@ -6,6 +6,7 @@ from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
  
+ 
 
 #verification email
 from django.contrib.sites.shortcuts import get_current_site
@@ -102,6 +103,11 @@ def activate(request, uidb64, token):
         
 @login_required(login_url= 'login')        
 def user_dashboard(request): 
+    # orders = Order.objects.order_by("-created_at").filter(user_id=request.user.id, is_ordered=True)
+    # orders_count = orders.count()
+    # context = {
+    #     'orders_count': orders_count,
+    
     
     return render(request, 'accounts/user_dashboard.html')
 
@@ -170,4 +176,7 @@ def resetpassword(request):
         messages.success(request, 'password do not match')       
     return render(request, 'accounts/resetpassword.html')
 
-           
+
+
+def edit_profile(request):
+    return render(request, 'accounts/edit_profile.html')           

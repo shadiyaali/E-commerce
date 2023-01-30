@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
  <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -9,11 +9,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+
+ 
+{% extends 'accounts/base.html' %}    
+{% load static %}
+
+{% block content %}   
+
 <style>
 	body {
 		color: #fff;
-		background: white;
+		background:  grey ;
 	}
 	.form-control {
         min-height: 41px;
@@ -92,8 +99,9 @@
 		text-decoration: underline;
 	}
 </style>
-</head>
+<!-- </head> -->
 <body> 
+ 
 {% if request.GET.command == 'verification' %}
 <div class="container max-auto alert alert-info text-center" style="max-width: 1024px; margin-top:100px;"> 
  thank you for registering with us. We have sent you a verification email 
@@ -149,3 +157,4 @@ Already verified? <a href="{% url 'login' %}">Login</a>
 
 </body>
 </html>
+{% endblock %}

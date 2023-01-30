@@ -958,7 +958,7 @@ ol {
 	opacity: 1;
 }
 
-.product__item:hover .product__item__text a {
+.product__item:hover .product__item__text a.animation {
 	top: 22px;
 	opacity: 1;
 	visibility: visible;
@@ -1054,7 +1054,7 @@ ol {
 	position: relative;
 }
 
-.product__item__text a {
+.product__item__text a.animation {
 	font-size: 15px;
 	color: #e53637;
 	font-weight: 700;

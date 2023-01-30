@@ -59,6 +59,10 @@ class Account(AbstractBaseUser):
 
     objects = MyAccountManager()
 
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
     def _str_(self):
         return self.username
 
@@ -73,13 +77,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
     address_line_1 = models.CharField(blank=True, max_length=100)
     address_line_2 = models.CharField(blank=True, max_length=100)
-    profile_picture = models.ImageField(blank=True, upload_to='userprofile')
-    city = models.CharField(blank=True, max_length=20)
-    state = models.CharField(blank=True, max_length=20)
-    country = models.CharField(blank=True, max_length=20)
-    
-    def __str__(self):
+    profile_picture = models.ImageField(default='default.jpg', upload_to='userprofile')
+    city = models.CharField(blank=True, max_length=30)
+    state = models.CharField(blank=True, max_length=30)
+    country = models.CharField(blank=True, max_length=30)
+
+    def _str_(self):
         return self.user.first_name
 
     def full_address(self):
-        return f'{self.address_line_1} {self.address_line_2}'   
+        return f'(self.address_line_1) (self.address_line_2)'
