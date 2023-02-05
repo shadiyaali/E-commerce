@@ -14,12 +14,12 @@
 						<div class="card-body" >
 							<div class="d-flex flex-column align-items-center text-center">
 								<h4> Logged in</h4> 
-								<img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
+								<img src="{{ userprofile.profile_picture.url }}" alt="Admin" class="rounded-circle p-1 bg-primary" width="110">
 								<div class="mt-3">
 									  <!-- <h4> Logged in</h4>   -->
 									 
+									<p>{{ user.first_name}}</p>
 									<p>{{ user.email}}</p>
-									<p>{{ user.phone_number}}</p>
 									<button class="btn btn-primary">Follow</button> 
 									 
                                     <div class=" btn btn-outline-primary">
@@ -82,7 +82,7 @@
 							</div>
 							<div class="row mb-3">
 								<div class="col-sm-3">
-									<a href=""style="color:blue";>Change Password</a>
+									<a href="{% url 'change_password' %} "style="color:blue";>Change Password</a>
 								</div>
 								 
 							</div>

@@ -18,37 +18,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" >
-                                        <img src="{{ single_product.images.url }}" alt="">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ single_product.images.url }}">
-                                        <img src="{{ single_product.images.url }}" alt="">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ single_product.images.url }}">
-                                        <img src="{{ single_product.images.url }}" alt="">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="{{ single_product.images.url }}">
-                                        <img src="{{ single_product.images.url }}" alt="">
-                                        <i class="fa fa-play"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </div>
                     <div class="col-lg-6 col-md-9">
                         <div class="tab-content">
@@ -57,98 +27,73 @@
                                     <img src="{{ single_product.images.url }}" alt="">
                                 </div>
                             </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{ single_product.images.url }}" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-3" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{ single_product.images.url }}" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="{{ single_product.images.url }}" alt="">
-                                    <a href="{% static 'https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1' %}" class="video-popup"><i class="fa fa-play"></i></a>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="product__details__content">
+            <form action="{% url 'add_cart' single_product.id %}" method="POST">
+                {% csrf_token %}
+
             <div class="container">
-                <div class="row d-flex justify-content-center">
+                
+               <div class="row d-flex justify-content-center">
+                   
+               
                     <div class="col-lg-8">
+
                         <div class="product__details__text">
                             <h4>{{ single_product.product_name }} </h4>
-                            <div class="rating">
+                            <!-- <div class="rating">
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star-o"></i>
                                 <span> - 5 Reviews</span>
-                            </div>
+                            </div> -->
                             <h3>₹{{ single_product.price }}<span>999</span></h3>
                             <p>{{ single_product.description }}</p>
                             <div class="product__details__option">
                                 <div class="product__details__option__size">
-                                    <span>Size:</span>
-                                    <label for="xxl">xxl
-                                        <input type="radio" id="xxl">
-                                    </label>
-                                    <label class="active" for="xl">xl
-                                        <input type="radio" id="xl">
-                                    </label>
-                                    <label for="l">l
-                                        <input type="radio" id="l">
-                                    </label>
-                                    <label for="sm">s
-                                        <input type="radio" id="sm">
-                                    </label>
+                                    <h6>Size:</h6>
+                                      <select name="size" class="form-control" required>
+                                        <option value="" disabled selected>Choose Size</option>
+                                        {% for i in single_product.variation_set.sizes %}  
+                                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                        {% endfor %}
+                                      </select>
+                                    
                                 </div>
                                 <div class="product__details__option__color">
-                                    <span>Color:</span>
-                                    <label class="c-1" for="sp-1">
-                                        <input type="radio" id="sp-1">
-                                    </label>
-                                    <label class="c-2" for="sp-2">
-                                        <input type="radio" id="sp-2">
-                                    </label>
-                                    <label class="c-3" for="sp-3">
-                                        <input type="radio" id="sp-3">
-                                    </label>
-                                    <label class="c-4" for="sp-4">
-                                        <input type="radio" id="sp-4">
-                                    </label>
-                                    <label class="c-9" for="sp-9">
-                                        <input type="radio" id="sp-9">
-                                    </label>
+                                    <h6>Color:</h6>
+                                      <select name="color" class="form-control" required>
+                                        <option value="" disabled selected>Choose Color</option>
+                                        {% for i in single_product.variation_set.colors %}  
+                                        <option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>
+                                        {% endfor %}
+                                      </select>                        
+                                    
+                                     
                                 </div>
                             </div>
                             <div class="product__details__cart__option">
                                 <div class="quantity">
-                                    <div class="pro-qty">
-                                        <input type="text" value="1">
-                                    </div>
+                                    <!-- <div class="pro-qty">
+                                        <input type="text">
+                                    </div> -->
                                 </div>
                                 {% if single_product.stock <= 0 %}
-                                  <h4 class="text-danger">Out Of Stock</h4> 
-                                 {% else %} 
-                                    {% if in_cart %}
-                                    <a href="#" class=" btn btn-success">Add to Cart</a>
-                                    <a href="{% url 'cart' %}"  class=" btn btn-outline-primary">View cart</a>
-                                    {% else %}
-                                   <a href="{% url 'add_cart' single_product.id %}" class=" btn btn-primary">Add to Cart</a>
-                                    {% endif %}
-                                 {% endif %}
+                                  <h5 class="text-danger">Out Of Stock</h5> 
+                                {% else %} 
+                                    <button type="submit"  class=" btn btn-primary">Add to Cart</button>
+                                {% endif %}
                             </div>
                             <div class="product__details__btns__option">
-                                <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
-                                <a href="#"><i class="fa fa-exchange"></i> Add To Compare</a>
+                                <a href="{% url 'wishlist' %}"><i class="fa fa-heart"></i> add to wishlist</a>
+                                
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
@@ -161,6 +106,7 @@
                             </div>
                         </div>
                     </div>
+                  </form>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
@@ -282,7 +228,10 @@
                         </div>
                     </div>
                 </div>
+        
+             
             </div>
+        </form>
         </div>
     </section>
     <!-- Shop Details Section End -->
@@ -304,9 +253,9 @@
 
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a></li>
+                                <li><a href="{% url 'wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a></li>
                                 <li><a href="#"><img src="{% static 'img/icon/compare.png' %}" alt=""> <span>View</span></a></li>
-                                <li><a href="#"><img src="{% static 'img/icon/search.png' %}" alt=""></a></li>
+                                <li><a href="{% url 'cart' %}"><img src="{% static 'img/icon/search.png' %}" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">

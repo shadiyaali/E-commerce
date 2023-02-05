@@ -49,8 +49,8 @@
             </div>
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
-            <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+            <a href="" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
+            <a href="{% url 'wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
             <a href="{% url 'cart' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{cart_count}}</span></a>
             <!-- <div class="price">$0.00</div> -->
         </div>
@@ -127,7 +127,7 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
                         <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
-                        <a href="#"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>0</span></a>
+                        <a href="{% url 'cart' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{ cart_count }}</span></a>
                         <div class="price">$0.00</div>
                     </div>
                 </div>
@@ -460,14 +460,7 @@
     <!-- Footer Section End -->
 
     <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
+    
     <!-- Search End -->
 
     <!-- Js Plugins -->

@@ -41,8 +41,8 @@
                     <a href="accounts/index.html"><img src="{% static 'img/logo.png' %}" height="30px" alt=""></a>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <nav class="header__menu mobile-menu">
+            <div class="col-lg-6 col-md-6 ">
+                <nav class="header__menu mobile-menu d-flex justify-content-between">
                     <ul>
                         <li class="active"><a href="{% url 'index' %} "> index</a></li>
                         <li><a href="{% url 'store' %}">Shop</a></li>
@@ -52,24 +52,36 @@
                                 <li><a href="#">Shop Details</a></li>
                                 <li><a href=" #">Shopping Cart</a></li>
                                 <li><a href=" #">Check Out</a></li>
-                                <li><a href=" #">Blog Details</a></li>
+                                 
                             </ul>
                         </li>
-                        <li><a href=" #">Blog</a></li>
-                        <li><a href=" #">Contacts</a></li>
+                          
+                        
                     </ul>
+                    <div class="shop__sidebar__search">
+                        <form action="{% url 'search' %}" class="search" method="GET">
+                            <input type="text" placeholder="Search..." >
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div> 
+                     
                 </nav>
+                 
             </div>
             <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
-                    <a href="#" class="search-switch"><img src="{% static 'img/icon/search.png' %}" alt=""></a>
-                    <a href="#"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
+                   
+                    <a href="{% url 'wishlist' %}"><img src="{% static 'img/icon/heart.png' %}" alt=""></a>
                     <a href="{% url 'cart' %}"><img src="{% static 'img/icon/cart.png' %}" alt=""> <span>{{cart_count}}</span></a>
                     <!-- <div class="price">$0.00</div> -->
                 </div>
+               
             </div>
         </div>
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>
+     
+        
+     
 </header>
  

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'category',
     'store',
     'cart',
+    # 'orders',
+    
     
 ]
 
@@ -78,6 +80,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Ecomm.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
